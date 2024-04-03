@@ -31,28 +31,30 @@ public class KeyBoard implements KeyListener{
             case KeyEvent.VK_W:
                 System.out.println("Pressionou tecla w");
                 if (this.cena != null){
-                    cena.addSpeed(0.005f, 0);
+                    //cena.addSpeed(0.005f, 0);
                 }
                 break;
 
             case KeyEvent.VK_A:
                 System.out.println("Pressionou tecla a");
                 if (this.cena != null) {
-                    cena.addSpeed(0, -0.005f);
+                    // cena.addSpeed(0, -0.005f);
+                    cena.setPaddleSpeedX(-0.005f);
                 }
                 break;
 
             case KeyEvent.VK_S:
                 System.out.println("Pressionou tecla s");
                 if (this.cena != null) {
-                    cena.addSpeed(-0.005f, 0);
+                    // cena.addSpeed(-0.005f, 0);
                 }
                 break;
 
             case KeyEvent.VK_D:
                 System.out.println("Pressionou tecla d");
                 if (this.cena != null) {
-                    cena.addSpeed(0, 0.005f);
+                    // cena.addSpeed(0, 0.005f);
+                    cena.setPaddleSpeedX(0.005f);
                 }
                 break;
 

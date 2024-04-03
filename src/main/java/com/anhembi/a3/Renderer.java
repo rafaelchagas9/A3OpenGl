@@ -21,8 +21,6 @@ import static java.lang.System.gc;
  */
 public class Renderer {
     private static GLWindow window = null;
-    public static int screenWidth = 1280;  //1280
-    public static int screenHeight = 960; //960
     private static GLEventListener scene;
     private static KeyListener keyListener;
 
@@ -33,10 +31,11 @@ public class Renderer {
         GLCapabilities caps = new GLCapabilities(profile);
         window = GLWindow.create(caps);
         window.setFullscreen(true);
+        window.setResizable(false);
 
-        sceneManager("objetivo");
 
-        //window.requestFocus();
+        sceneManager("");
+
         FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start(); //inicia o loop de animação
 
@@ -49,7 +48,6 @@ public class Renderer {
             }
         });
 
-        //window.setFullscreen(true);
         window.setVisible(true);
     }
 
