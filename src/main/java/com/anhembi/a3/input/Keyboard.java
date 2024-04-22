@@ -1,7 +1,7 @@
 package com.anhembi.a3.input;
 
 import com.anhembi.a3.Cena;
-import com.anhembi.a3.Renderer;
+import com.anhembi.a3.Fase2;
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
 
@@ -9,16 +9,13 @@ import com.jogamp.newt.event.KeyListener;
  *
  * @author Kakugawa
  */
-public class KeyBoard implements KeyListener{
-    private Cena cena;
+public class Keyboard implements KeyListener{
+    private final Cena cena;
 
-    public KeyBoard(){
-
-    }
-
-    public KeyBoard(Cena cena){
+    public Keyboard(Cena cena){
         this.cena = cena;
     }
+
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -60,20 +57,21 @@ public class KeyBoard implements KeyListener{
 
             case KeyEvent.VK_R:
                 System.out.println("Mudando para tela de regras");
-                Renderer.sceneManager("regras");
                 break;
 
             case KeyEvent.VK_G:
                 System.out.println("Mudando para tela de objetivos");
-                Renderer.sceneManager("objetivo");
                 break;
 
             case KeyEvent.VK_M:
-                Renderer.sceneManager("");
+                this.cena.setScene("");
                 break;
 
             case KeyEvent.VK_P:
-                Renderer.sceneManager("fase1");
+                this.cena.setScene("fase1");
+                break;
+            case KeyEvent.VK_L:
+                this.cena.setScene("fase2");
                 break;
         }
     }

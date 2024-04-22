@@ -11,7 +11,7 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
-import com.anhembi.a3.input.KeyBoard;
+import com.anhembi.a3.input.Keyboard;
 
 import static java.lang.System.gc;
 
@@ -33,8 +33,10 @@ public class Renderer {
         window.setFullscreen(true);
         window.setResizable(false);
 
-
-        sceneManager("");
+        Cena cena = new Cena();
+        window.addGLEventListener(cena); //adiciona a Cena a Janela
+        //Habilita o teclado : cena
+        window.addKeyListener(new Keyboard(cena));
 
         FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start(); //inicia o loop de animação
@@ -49,37 +51,6 @@ public class Renderer {
         });
 
         window.setVisible(true);
-    }
-
-    public static void sceneManager(String sceneName){
-        System.out.println("Mudando para cena: " + sceneName);
-        window.disposeGLEventListener(scene, false);
-        window.removeGLEventListener(scene);
-        window.removeKeyListener(keyListener);
-
-        gc();
-
-        switch (sceneName) {
-            case "fase1":
-                Cena cena = new Cena();
-                scene = cena;
-                keyListener = new KeyBoard(cena);
-                break;
-            case "regras":
-                scene = new TelaRegras();
-                keyListener = new KeyBoard();
-                break;
-            case "objetivo":
-                scene = new TelaObjetivo();
-                keyListener = new KeyBoard();
-            default:
-                keyListener = new KeyBoard();
-                scene = new MenuInicial();
-                break;
-        }
-
-        window.addGLEventListener(scene);
-        window.addKeyListener(keyListener);
     }
 
     public static void main(String[] args) {
